@@ -4,7 +4,7 @@ import 'package:nutri_track/models/User.dart';
 
 void main(){
   test("NutriTrackUserModel", (){
-    NutriTrackUser nutriTrackUser = NutriTrackUser("abc", "pqr", 20, "email");
+    NutriTrackUser nutriTrackUser = NutriTrackUser("abc", "pqr", "email", 20 ,180);
     expect(nutriTrackUser.age, 20);
   });
 }

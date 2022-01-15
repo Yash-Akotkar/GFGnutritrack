@@ -12,7 +12,7 @@ class Wrapper extends StatefulWidget {
 
 class _WrapperState extends State<Wrapper> {
   bool isLoggedIn = true;
-  NutriTrackUser user = NutriTrackUser("aexxb","abc", 20, "email");
+  NutriTrackUser user = NutriTrackUser("aexxb","abc", "email", 20, 180);
   @override
   Widget build(BuildContext context) {
     return HomePage(user: this.user,);

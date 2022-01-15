@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:nutri_track/models/User.dart';
+import 'package:nutri_track/pages/HomePage.dart';
 
 class Wrapper extends StatefulWidget {
   const Wrapper({Key? key}) : super(key: key);
@@ -9,20 +11,10 @@ class Wrapper extends StatefulWidget {
 }
 
 class _WrapperState extends State<Wrapper> {
+  bool isLoggedIn = true;
+  NutriTrackUser user = NutriTrackUser("aexxb","abc", 20, "email");
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("NutriTrack"),),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Icon(Icons.broken_image)
-            , Text("App Under Construction!")
-          ],
-        ),
-      )
-    );
+    return HomePage(user: this.user,);
   }
 }

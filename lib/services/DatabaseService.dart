@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:nutri_track/models/User.dart';
 
-class DatabaseService{
+class DatabaseService {
   String _firebaseUID;
   String? _dir;
 
@@ -11,16 +11,24 @@ class DatabaseService{
   NutriTrackUser? _nutriTrackUser;
 
   DatabaseService(this._firebaseUID) {
-    this._dir = '/users/${this._firebaseUID}';
+    _dir = '/users/${_firebaseUID}';
   }
 
-  Future<NutriTrackUser> getUser() async{
-    try{
-      var userData = await this.firebaseFirestore.collection("users").doc(this._firebaseUID).get();
-      this._nutriTrackUser = NutriTrackUser(this._firebaseUID, userData["name"].toString(), userData["email"], userData["age"], userData["height"]);
-    }catch(e){
+  Future<NutriTrackUser> getUser() async {
+    try {
+      var userData =
+          await firebaseFirestore.collection("users").doc(_firebaseUID).get();
+
+      _nutriTrackUser = NutriTrackUser(
+          _firebaseUID,
+          userData["name"].toString(),
+          userData["email"].toString(),
+          userData["age_yrs"],
+          userData["height_cm"]);
+    } catch (e) {
+      print(e);
     }
-    return this._nutriTrackUser!;
+    return _nutriTrackUser!;
   }
 
   String get dir => _dir!;

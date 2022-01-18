@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:nutri_track/models/User.dart';
+import 'package:nutri_track/models/NutriTrackUser.dart';
 
 class HomePage extends StatefulWidget {
   final NutriTrackUser user;

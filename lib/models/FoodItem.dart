@@ -1,4 +1,3 @@
-
 import 'package:nutri_track/models/Parameters.dart';
 
 class FoodItem{

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class login extends StatefulWidget {
@@ -24,7 +22,7 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     Widget buildEmail() => Padding(
-          padding: EdgeInsets.all(32.0),
+          padding: EdgeInsets.fromLTRB(32, 10, 32, 10),
           child: TextField(
             controller: emailController,
             decoration: InputDecoration(
@@ -35,7 +33,7 @@ class _loginState extends State<login> {
               labelStyle: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w300,
-                ),
+              ),
               // prefixIcon: Icon(Icons.mail),
               suffixIcon: emailController.text.isEmpty
                   ? Container(width: 0)
@@ -68,9 +66,9 @@ class _loginState extends State<login> {
             hintText: 'Your Password...',
             labelText: 'Password',
             labelStyle: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w300,
-                ),
+              fontSize: 16,
+              fontWeight: FontWeight.w300,
+            ),
             // errorText: 'Password is wrong',
             suffixIcon: IconButton(
               icon: isPasswordVisible
@@ -97,31 +95,120 @@ class _loginState extends State<login> {
           width: 323, // <-- Your width
           height: 56,
           child: ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(100),
-                          // side: BorderSide(color: Colors.red)
-                          ))),
-              child: Text(
-                'Log In',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                )),
+                backgroundColor: MaterialStateProperty.all(
+                    Color.fromRGBO(145, 199, 136, 50))),
+            child: Text(
+              'Log In',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            onPressed: () {
+              print('Email: ${emailController.text}');
+              print('Password: ${password}');
+            },
+          ),
+        ));
+
+    Widget buildContinue() => Padding(
+          padding: EdgeInsets.fromLTRB(32, 10, 32, 20),
+          child: Row(
+            children: [
+              Expanded(
+                child: Divider(
+                  color: Colors.black,
                 ),
               ),
-              onPressed: () {
-                print('Email: ${emailController.text}');
-                print('Password: ${password}');
-              }),
+              Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  "or continue with",
+                  style: TextStyle(fontWeight: FontWeight.w300),
+                ),
+              ),
+              Expanded(
+                child: Divider(
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
+        );
+
+      Widget buildFacebook() => Padding(
+        padding: EdgeInsets.fromLTRB(32.0, 10.0, 32.0, 10.0),
+        child: SizedBox(
+          width: 323, // <-- Your width
+          height: 56,
+          child: ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                )),
+                backgroundColor: MaterialStateProperty.all(
+                    Colors.blue[600])),
+            child: Text(
+              'Continue with Facebook',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            onPressed: () {},
+          ),
         ));
+
+      Widget buildGoogle() => Padding(
+        padding: EdgeInsets.fromLTRB(32.0, 10.0, 32.0, 10.0),
+        child: SizedBox(
+          width: 323, // <-- Your width
+          height: 56,
+          child: ElevatedButton(
+            style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                )),
+                backgroundColor: MaterialStateProperty.all(
+                    Colors.red[600])),
+            child: Text(
+              'Continue with Google',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                // color: Colors.black,
+              ),
+            ),
+            onPressed: () {},
+          ),
+        )); 
+
+        Widget buildSignup() => Padding(
+          padding: EdgeInsets.fromLTRB(32, 10, 32, 0),
+          child: TextButton(
+                child: Text(
+                  "Don't have an account? Sign up",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                onPressed: () {},
+              ),
+        );
 
     return Scaffold(
         backgroundColor: Colors.yellow[50],
         body: Column(
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 125, vertical: 50),
+              padding: EdgeInsets.fromLTRB(125, 75, 125,25),
               child: Text(
                 "Log In",
                 style: TextStyle(
@@ -133,20 +220,41 @@ class _loginState extends State<login> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(90, 10, 90, 10),
-              child: Text(
-                "Welcome back you’ve been missed!",
-                style: TextStyle(
-                  fontFamily: 'Montserrat',
-                  // color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 18.0,
+              padding: EdgeInsets.fromLTRB(90, 0, 90, 20),
+              child: Center(
+                child: Text(
+                  "Welcome back you’ve been missed!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    // color: Colors.white,
+                    fontWeight: FontWeight.w300,
+                    fontSize: 18.0,
+                  ),
                 ),
               ),
             ),
             buildEmail(),
             buildPassword(),
+            // SizedBox(height: 10,),
+            Padding(
+              padding: EdgeInsets.fromLTRB(199, 0, 32, 0),
+              // child: Text("Forget Password?"),
+              child: TextButton(
+                child: Text(
+                  'Forgot Password?',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                onPressed: () {},
+              ),
+            ),
             buildSubmit(),
+            buildContinue(),
+            buildFacebook(),
+            buildGoogle(),
+            buildSignup(),
           ],
         ));
   }

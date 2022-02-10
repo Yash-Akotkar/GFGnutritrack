@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:nutri_track/pages/SignUpPage.dart';
+import 'package:nutri_track/pages/LoginPage.dart';
 
-class login extends StatefulWidget {
-  const login({Key? key}) : super(key: key);
+class signup extends StatefulWidget {
+  const signup({Key? key}) : super(key: key);
 
   @override
-  _loginState createState() => _loginState();
+  _signupState createState() => _signupState();
 }
 
-class _loginState extends State<login> {
+class _signupState extends State<signup> {
   final emailController = TextEditingController();
   String password = '';
   bool isPasswordVisible = false;
@@ -104,7 +104,7 @@ class _loginState extends State<login> {
                 backgroundColor: MaterialStateProperty.all(
                     Color.fromRGBO(145, 199, 136, 50))),
             child: Text(
-              'Log In',
+              'Sign Up',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
@@ -191,17 +191,17 @@ class _loginState extends State<login> {
           ),
         )); 
 
-        Widget buildSignup() => Padding(
+        Widget buildLogin() => Padding(
           padding: EdgeInsets.fromLTRB(32, 10, 32, 0),
           child: TextButton(
                 child: Text(
-                  "Don't have an account? Sign up",
+                  "Already have an account? Log In",
                   style: TextStyle(
                     fontWeight: FontWeight.w300,
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => const login()),);
                 },
               ),
         );
@@ -209,57 +209,59 @@ class _loginState extends State<login> {
     return Scaffold(
         backgroundColor: Colors.yellow[50],
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(125, 75, 125,25),
-                child: Text(
-                  "Log In",
-                  style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    // color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32.0,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(90, 0, 90, 20),
-                child: Center(
+          child: Container(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(120, 75, 120,30),
                   child: Text(
-                    "Welcome back you’ve been missed!",
-                    textAlign: TextAlign.center,
+                    "Sign Up",
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       // color: Colors.white,
-                      fontWeight: FontWeight.w300,
-                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 32.0,
                     ),
                   ),
                 ),
-              ),
-              buildEmail(),
-              buildPassword(),
-              // SizedBox(height: 10,),
-              Padding(
-                padding: EdgeInsets.fromLTRB(199, 0, 32, 0),
-                // child: Text("Forget Password?"),
-                child: TextButton(
-                  child: Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w300,
+                Padding(
+                  padding: EdgeInsets.fromLTRB(90, 20, 90, 20),
+                  child: Center(
+                    child: Text(
+                      "Enter your Username and Password",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        // color: Colors.white,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
-                  onPressed: () {},
                 ),
-              ),
-              buildSubmit(),
-              buildContinue(),
-              buildFacebook(),
-              buildGoogle(),
-              buildSignup(),
-            ],
+                buildEmail(),
+                buildPassword(),
+                // SizedBox(height: 10,),
+                // Padding(
+                //   padding: EdgeInsets.fromLTRB(199, 0, 32, 0),
+                //   // child: Text("Forget Password?"),
+                //   child: TextButton(
+                //     child: Text(
+                //       'Forgot Password?',
+                //       style: TextStyle(
+                //         fontWeight: FontWeight.w300,
+                //       ),
+                //     ),
+                //     onPressed: () {},
+                //   ),
+                // ),
+                buildSubmit(),
+                buildContinue(),
+                buildFacebook(),
+                buildGoogle(),
+                buildLogin(),
+              ],
+            ),
           ),
         ));
   }

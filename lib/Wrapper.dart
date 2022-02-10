@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nutri_track/models/NutriTrackUser.dart';
 import 'package:nutri_track/pages/HomePage.dart';
+import 'package:nutri_track/pages/SignUpPage.dart';
 import 'package:nutri_track/services/DatabaseService.dart';
 import 'package:nutri_track/pages/LoginPage.dart';
 
@@ -28,6 +29,6 @@ class _WrapperState extends State<Wrapper> {
   Widget build(BuildContext context) {
     exe();
     // return HomePage(user: this.user,);
-    return login();   
+    return signup();   
   }
 }

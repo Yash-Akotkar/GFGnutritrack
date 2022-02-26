@@ -113,6 +113,7 @@ class _signupState extends State<signup> {
             onPressed: () {
               print('Email: ${emailController.text}');
               print('Password: ${password}');
+                Navigator.push(context,MaterialPageRoute(builder: (context) => const login()),);
             },
           ),
         ));
@@ -162,7 +163,10 @@ class _signupState extends State<signup> {
                 fontSize: 16,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+                  Navigator.push(context,MaterialPageRoute(builder: (context) => const login()),);
+
+            },
           ),
         ));
 
@@ -187,7 +191,9 @@ class _signupState extends State<signup> {
                 // color: Colors.black,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+               Navigator.push(context,MaterialPageRoute(builder: (context) => const login()),);
+            },
           ),
         )); 
 

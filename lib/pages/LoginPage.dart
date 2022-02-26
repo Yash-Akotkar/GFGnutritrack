@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nutri_track/pages/HomePage.dart';
 import 'package:nutri_track/pages/SignUpPage.dart';
+import 'package:nutri_track/pages/mainPage.dart';
 
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -113,6 +115,7 @@ class _loginState extends State<login> {
             onPressed: () {
               print('Email: ${emailController.text}');
               print('Password: ${password}');
+              Navigator.push(context,MaterialPageRoute(builder: (context) => const mainPage()),);
             },
           ),
         ));
@@ -162,7 +165,10 @@ class _loginState extends State<login> {
                 fontSize: 16,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+                Navigator.push(context,MaterialPageRoute(builder: (context) => const HomePage()),);
+
+            },
           ),
         ));
 
@@ -187,7 +193,9 @@ class _loginState extends State<login> {
                 // color: Colors.black,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,MaterialPageRoute(builder: (context) => const HomePage()),);
+            },
           ),
         )); 
 
